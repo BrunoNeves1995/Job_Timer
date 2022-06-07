@@ -1,7 +1,35 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
-class SplashPage extends StatelessWidget {
+import 'package:asuka/asuka.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
+class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
+
+  @override
+  State<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    super.initState();
+    // listiner que vai ficar escutando alteração do usuario no firebase
+    FirebaseAuth.instance.userChanges().listen((user) {
+      if (user != null) {
+        log('Usuario esta logado');
+        Modular.to.pushNamed('/home/');
+      } else {
+        log('Usuario não esta logado');
+        Modular.to.pushNamed('/login/');
+      }
+    });
+
+    // depois que a tela for instancia, executa
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -9,20 +37,19 @@ class SplashPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Splash'),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                label: Text(
-                  'Texte',
-                ),
-              ),
-            ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFF0092B9),
+              Color(0xFF0165B1),
+            ],
+            // begin: Alignment.bottomCenter,
           ),
-          ElevatedButton(onPressed: () {}, child: const Text('Botao'))
-        ],
+        ),
+        child: Center(
+          child: Image.asset('assets/images/logo.png'),
+        ),
       ),
     );
   }

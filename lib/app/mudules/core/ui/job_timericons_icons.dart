@@ -29,6 +29,8 @@ class JobTimericons {
   static const _kFontFam = 'JobTimericons';
   static const String? _kFontPkg = null;
 
+  // ignore: constant_identifier_names
   static const IconData ok_circled2 = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // ignore: constant_identifier_names
   static const IconData angle_double_right = IconData(0xf101, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
