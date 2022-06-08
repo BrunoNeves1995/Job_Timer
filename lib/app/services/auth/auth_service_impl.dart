@@ -12,12 +12,22 @@ class AuthServiceImpl implements AuthService {
     // 2º obter os detalhes da nossa conexão
     final googleAuth = await googleUser?.authentication;
 
-    // 3º pegando a credencial
-    final credential = googleAuth?.idToken;
+    // 3º pegando a credencial e passando os parametros
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // 4º fazer o login no firebase
+    await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
   @override
-  Future<void> signOut() {
-    throw UnimplementedError();
+  Future<void> signOut() async {
+    // 1º Deslogando o usuario do farebase
+    await FirebaseAuth.instance.signOut();
+
+    // 2º faz com que abra a janela de login novamente do google
+    await GoogleSignIn().disconnect();
   }
 }
