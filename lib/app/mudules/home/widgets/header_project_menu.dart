@@ -15,12 +15,12 @@ class HeaderProjectMenu extends SliverPersistentHeaderDelegate {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SizedBox(
-              width: constraints.maxWidth * .45,
+              width: constraints.maxWidth * .5,
               child: DropdownButtonFormField<ProjectStatus>(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50)),
-                  contentPadding: const EdgeInsets.all(10),
+                  contentPadding: const EdgeInsets.all(7),
                   isCollapsed: true,
                 ),
                 items: ProjectStatus.values
@@ -35,14 +35,19 @@ class HeaderProjectMenu extends SliverPersistentHeaderDelegate {
               ),
             ),
             SizedBox(
-                width: constraints.maxWidth * .42,
-                child: ElevatedButton.icon(
-                  label: const Text('Novo Projetos'),
-                  icon: const Icon(Icons.add),
-                  onPressed: () {
-                    Modular.to.pushNamed('/project/register/');
-                  },
-                )),
+              width: constraints.maxWidth * .4,
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(8),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50))),
+                label: const Text('Novo Projeto'),
+                icon: const Icon(Icons.add),
+                onPressed: () {
+                  Modular.to.pushNamed('/project/register/');
+                },
+              ),
+            ),
           ],
         ),
       );

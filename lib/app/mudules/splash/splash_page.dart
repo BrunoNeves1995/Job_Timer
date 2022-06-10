@@ -23,7 +23,7 @@ class _SplashPageState extends State<SplashPage> {
         Modular.to.pushNamed('/home/');
       } else {
         log('Usuario não esta logado');
-        Modular.to.pushNamed('/login/');
+        Modular.to.pushNamed('/home/');
       }
     });
   }
