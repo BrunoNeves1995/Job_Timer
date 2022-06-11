@@ -15,28 +15,38 @@ class HeaderProjectMenu extends SliverPersistentHeaderDelegate {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SizedBox(
-              width: constraints.maxWidth * .45,
+              width: constraints.maxWidth * .5,
               child: DropdownButtonFormField<ProjectStatus>(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50)),
-                  contentPadding: const EdgeInsets.all(10),
+                  contentPadding: const EdgeInsets.all(6),
                   isCollapsed: true,
+                  isDense: true,
                 ),
                 items: ProjectStatus.values
                     .map(
                       (e) => DropdownMenuItem(
+                        //enabled: false,
+                        alignment: Alignment.center,
                         value: e,
                         child: Text(e.label),
                       ),
                     )
                     .toList(),
                 onChanged: (value) {},
+                // alignment: Alignment.topLeft
               ),
             ),
             SizedBox(
                 width: constraints.maxWidth * .42,
                 child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(7),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      side: const BorderSide(style: BorderStyle.none)),
                   label: const Text('Novo Projetos'),
                   icon: const Icon(Icons.add),
                   onPressed: () {

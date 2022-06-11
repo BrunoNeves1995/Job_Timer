@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'widgets/header_project_menu.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +24,9 @@ class HomePage extends StatelessWidget {
               toolbarHeight: 110,
               centerTitle: true,
               shape: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    style: BorderStyle.none,
+                  ),
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.elliptical(25, 25),
                       bottomRight: Radius.elliptical(25, 25))),

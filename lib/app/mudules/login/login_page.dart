@@ -1,17 +1,16 @@
-import 'dart:developer';
-
 import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:job_timer/app/core/ui/core_ui_loader.dart';
 import 'package:job_timer/app/mudules/login/controller/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
   //! recebendo a controller no construtor
   final LoginController controller;
   const LoginPage({
-    Key? key,
+    super.key,
     required this.controller,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +66,7 @@ class LoginPage extends StatelessWidget {
                     return Visibility(
                       // Visibility -> se for true ele mostra de nao for ele nao mostra
                       visible: showLoader,
-                      child: const Center(
-                        child: CircularProgressIndicator.adaptive(
-                            backgroundColor: Colors.white),
-                      ),
+                      child: const CoreUiLoader(),
                     );
                   },
                 )
