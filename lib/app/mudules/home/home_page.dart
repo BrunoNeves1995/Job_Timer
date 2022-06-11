@@ -20,16 +20,16 @@ class HomePage extends StatelessWidget {
           slivers: [
             const SliverAppBar(
               title: Text('Projeto'),
-              expandedHeight: 110,
-              toolbarHeight: 110,
+              expandedHeight: 100,
+              toolbarHeight: 100,
               centerTitle: true,
               shape: OutlineInputBorder(
                   borderSide: BorderSide(
                     style: BorderStyle.none,
                   ),
                   borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.elliptical(25, 25),
-                      bottomRight: Radius.elliptical(25, 25))),
+                      bottomLeft: Radius.elliptical(20, 20),
+                      bottomRight: Radius.elliptical(20, 20))),
             ),
             SliverPersistentHeader(
               delegate: HeaderProjectMenu(),
